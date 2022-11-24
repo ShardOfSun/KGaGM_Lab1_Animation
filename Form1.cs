@@ -13,7 +13,7 @@ namespace WindowsFormsApp1
         public Form1()
         { InitializeComponent(); }
 
-        private void DrawSky()
+        private void DrawBack()
         {
             // Начало работы
             g = CreateGraphics();
@@ -60,11 +60,12 @@ namespace WindowsFormsApp1
 
 
 
-            // Фон
+#region Облака
+
+            // Фон (Облака 0)
             SolidBrush background = new SolidBrush(Color.FromArgb(140, 165, 189));
             g.FillRectangle(background, 0, 0, 1280, 720);
-            SolidBrush test = new SolidBrush(Color.Black);
-
+            
             // Кисти для облаков
             SolidBrush cl1 = new SolidBrush(Color.FromArgb(99, 119, 148));
             SolidBrush cl2 = new SolidBrush(Color.FromArgb(66, 81, 112));
@@ -72,11 +73,13 @@ namespace WindowsFormsApp1
             SolidBrush cl4 = new SolidBrush(Color.FromArgb(20, 28, 66));
             SolidBrush cl5 = new SolidBrush(Color.FromArgb(8, 12, 52));
 
+
+
             // Облака 1
-            g.FillEllipse(cl1, -16,-2,34,34);
-            g.FillEllipse(cl1, -41,-4, 195, 116);
-            g.FillEllipse(cl1, 117,21, 104, 93);
-            g.FillEllipse(cl1, 199,5, 76, 74);
+            g.FillEllipse(cl1, -16, -2, 34, 34);
+            g.FillEllipse(cl1, -41, -4, 195, 116);
+            g.FillEllipse(cl1, 117, 21, 104, 93);
+            g.FillEllipse(cl1, 199, 5, 76, 74);
             g.FillEllipse(cl1, 260, 0, 72, 69);
             g.FillEllipse(cl1, 287, 15, 87, 77);
             g.FillEllipse(cl1, 358, 36, 98, 75);
@@ -98,7 +101,7 @@ namespace WindowsFormsApp1
             g.FillRectangle(cl1, 690, 50, 180, 47);
             g.FillRectangle(cl1, 900, 50, 180, 50);
             g.FillRectangle(cl1, 950, 0, 300, 50);
-           
+
 
             // Облака 2
             g.FillEllipse(cl2, -23, 89, 92, 59);
@@ -135,7 +138,7 @@ namespace WindowsFormsApp1
             g.FillEllipse(cl3, 71, 176, 95, 83);
             g.FillEllipse(cl3, 146, 154, 87, 83);
             g.FillEllipse(cl3, 216, 141, 83, 75);
-            g.FillEllipse(cl3, 249, 148, 90, 88);   
+            g.FillEllipse(cl3, 249, 148, 90, 88);
             g.FillEllipse(cl3, 326, 166, 103, 83);
             g.FillEllipse(cl3, 420, 174, 95, 83);
             g.FillEllipse(cl3, 487, 156, 96, 101);
@@ -164,7 +167,7 @@ namespace WindowsFormsApp1
             g.FillEllipse(cl4, 334, 246, 90, 88);
             g.FillEllipse(cl4, 397, 248, 76, 67);
             g.FillEllipse(cl4, 452, 269, 43, 42);
-            g.FillEllipse(cl4, 483 , 248, 73, 77);
+            g.FillEllipse(cl4, 483, 248, 73, 77);
             g.FillEllipse(cl4, 528, 229, 91, 89);
             g.FillEllipse(cl4, 613, 254, 58, 58);
             g.FillEllipse(cl4, 664, 264, 62, 64);
@@ -179,8 +182,7 @@ namespace WindowsFormsApp1
             g.FillEllipse(cl4, 1155, 242, 41, 35);
             g.FillEllipse(cl4, 1175, 183, 95, 83);
 
-            g.FillRectangle(cl4, 400, 280, 450, 90);
-
+            g.FillRectangle(cl4, 300, 275, 800, 95);
 
             // Облака 5
             g.FillEllipse(cl5, 387, 339, 85, 72);
@@ -194,19 +196,18 @@ namespace WindowsFormsApp1
             g.FillEllipse(cl5, 781, 349, 43, 44);
             g.FillEllipse(cl5, 818, 325, 57, 59);
 
-            cl1.Dispose();
-            cl2.Dispose();
-            cl3.Dispose();
-            cl4.Dispose();
-            cl5.Dispose();
+            g.FillRectangle(cl5, 300, 370, 800, 150);
+            g.FillRectangle(cl5, 600, 360, 130, 150);
+            #endregion
 
+#region Горы
             // Кисти для Гор
             SolidBrush mo1 = new SolidBrush(Color.FromArgb(23, 11, 24));
             SolidBrush mo2 = new SolidBrush(Color.FromArgb(35, 20, 30));
             SolidBrush mo3 = new SolidBrush(Color.FromArgb(69, 34, 48));
             SolidBrush mo4 = new SolidBrush(Color.FromArgb(51, 25, 32));
 
-            //Горы 1
+    #region Горы 1
             Point[] m1 = new Point[22];
 
             m1[0] = new Point(0, 720);
@@ -219,14 +220,10 @@ namespace WindowsFormsApp1
             m1[7] = new Point(604, 489);
             m1[8] = new Point(620, 416);
             m1[9] = new Point(643, 471);
-
             m1[10] = new Point(702, 463);
-
             m1[11] = new Point(656, 344);
-
             m1[12] = new Point(839, 478);
             m1[13] = new Point(1069, 384);
-
             m1[14] = new Point(1022, 243);
             m1[15] = new Point(1105, 311);
             m1[16] = new Point(1099, 287);
@@ -234,18 +231,15 @@ namespace WindowsFormsApp1
             m1[18] = new Point(1111, 233);
             m1[19] = new Point(1186, 251);
             m1[20] = new Point(1280, 42);
-
             m1[21] = new Point(1280, 720);
-            
+
             g.FillPolygon(mo1, m1);
+    #endregion
 
-            //Горы 2
-            Point[] m2 = new Point[62];
-            
-            //
+    #region Горы 2
+            Point[] m2 = new Point[63];
+
             m2[0] = new Point(0, 276);
-            //
-
             m2[1] = new Point(54, 204);
             m2[2] = new Point(49, 306);
             m2[3] = new Point(165, 266);
@@ -262,76 +256,59 @@ namespace WindowsFormsApp1
             m2[14] = new Point(578, 520);
             m2[15] = new Point(588, 543);
             m2[16] = new Point(746, 577);
-            //
             m2[17] = new Point(726, 641);
-            //
             m2[18] = new Point(905, 636);
             m2[19] = new Point(901, 584);
-            
             m2[20] = new Point(830, 541);
-
             m2[21] = new Point(818, 598);
-            m2[22] = new Point(644, 476);
-            m2[23] = new Point(661, 430);
-            m2[24] = new Point(678, 440);
-            m2[25] = new Point(688, 413);
-            m2[26] = new Point(727, 430);
-            m2[27] = new Point(718, 290);
-            m2[28] = new Point(804, 375);
-            m2[29] = new Point(797, 347);
-            m2[30] = new Point(860, 381);
-            
-            //
-            m2[31] = new Point(862, 357);
-            //
-            
-            m2[32] = new Point(982, 427);
-            m2[33] = new Point(907, 269);
-            
-            //
-            m2[34] = new Point(1150, 339);
-            m2[35] = new Point(1110, 468);
-            m2[36] = new Point(1088, 450);
-            //
-
-            m2[37] = new Point(1006, 720);
-            m2[38] = new Point(938, 720);
-            m2[39] = new Point(895, 704);
-            m2[40] = new Point(880, 720);
-            m2[41] = new Point(806, 720);
-            //
-            m2[42] = new Point(726, 641);
-            //
-            m2[43] = new Point(687, 711);
-            m2[44] = new Point(659, 692);
-            m2[45] = new Point(650, 720);
-            m2[46] = new Point(561, 720);
-            m2[47] = new Point(339, 631);
-            m2[48] = new Point(292, 661);
-            m2[49] = new Point(237, 605);
-            m2[50] = new Point(217, 656);
-            m2[51] = new Point(155, 528);
-            m2[52] = new Point(136, 587);
-            m2[53] = new Point(122, 574);
-            m2[54] = new Point(109, 603);
-            m2[55] = new Point(0, 470);
-            m2[56] = new Point(0, 276);
-
-            //
-            m2[57] = new Point(522, 543);
-            //
-
-            m2[58] = new Point(540, 525);
-            m2[59] = new Point(580, 553);
+            m2[22] = new Point(680, 535);
+            m2[23] = new Point(644, 472);
+            m2[24] = new Point(661, 430);
+            m2[25] = new Point(678, 440);
+            m2[26] = new Point(688, 413);
+            m2[27] = new Point(727, 430);
+            m2[28] = new Point(718, 290);
+            m2[29] = new Point(804, 375);
+            m2[30] = new Point(797, 347);
+            m2[31] = new Point(860, 381);
+            m2[32] = new Point(862, 357);
+            m2[33] = new Point(982, 427);
+            m2[34] = new Point(907, 269);
+            m2[35] = new Point(1150, 339);
+            m2[36] = new Point(1110, 468);
+            m2[37] = new Point(1088, 450);
+            m2[38] = new Point(1006, 720);
+            m2[39] = new Point(938, 720);
+            m2[40] = new Point(895, 704);
+            m2[41] = new Point(880, 720);
+            m2[42] = new Point(806, 720);
+            m2[43] = new Point(726, 641);
+            m2[44] = new Point(687, 711);
+            m2[45] = new Point(659, 692);
+            m2[46] = new Point(650, 720);
+            m2[47] = new Point(561, 720);
+            m2[48] = new Point(339, 631);
+            m2[49] = new Point(292, 661);
+            m2[50] = new Point(237, 605);
+            m2[51] = new Point(217, 656);
+            m2[52] = new Point(155, 528);
+            m2[53] = new Point(136, 587);
+            m2[54] = new Point(122, 574);
+            m2[55] = new Point(109, 603);
+            m2[56] = new Point(0, 470);
+            m2[57] = new Point(0, 276);
+            m2[58] = new Point(522, 543);
+            m2[59] = new Point(540, 525);
             m2[60] = new Point(580, 553);
-            m2[61] = new Point(522, 543);
+            m2[61] = new Point(580, 553);
+            m2[62] = new Point(522, 543);
 
             g.FillPolygon(mo2, m2);
+            #endregion
 
-            //Горы 3
+    #region Горы 3
             Point[] m3 = new Point[38];
 
-            //
             m3[0] = new Point(0, 374);
             m3[1] = new Point(67, 332);
             m3[2] = new Point(72, 347);
@@ -342,31 +319,23 @@ namespace WindowsFormsApp1
             m3[7] = new Point(380, 309);
             m3[8] = new Point(389, 462);
             m3[9] = new Point(456, 436);
-            
-            //
             m3[10] = new Point(484, 526);
             m3[11] = new Point(726, 641);
             m3[12] = new Point(852, 649);
             m3[13] = new Point(886, 637);
-            //
-
             m3[14] = new Point(810, 448);
             m3[15] = new Point(1001, 542);
             m3[16] = new Point(791, 248);
-            m3[17] = new Point(1127, 422);
+            m3[17] = new Point(1125, 422);
             m3[18] = new Point(1110, 468);
             m3[19] = new Point(1088, 450);
             m3[20] = new Point(1035, 625);
             m3[21] = new Point(1000, 654);
             m3[22] = new Point(921, 654);
-            
-            //
             m3[23] = new Point(886, 637);
             m3[24] = new Point(852, 649);
             m3[25] = new Point(726, 641);
             m3[26] = new Point(484, 526);
-            //
-
             m3[27] = new Point(212, 502);
             m3[28] = new Point(191, 437);
             m3[29] = new Point(146, 499);
@@ -379,189 +348,135 @@ namespace WindowsFormsApp1
             m3[36] = new Point(64, 384);
             m3[37] = new Point(0, 421);
 
-            g.FillPolygon(mo3,m3);
-
-            /*
-            // Горы 1
-
-            Point[] m1 = new Point[23];
-
-            m1[0] = new Point(0,720);
-
-            m1[1] = new Point(517, 453);
-            m1[2] = new Point(524, 469);
-            m1[3] = new Point(542, 448);
-            m1[4] = new Point(559, 489);
-            m1[5] = new Point(584, 458);
-            m1[6] = new Point(609, 504);
-            m1[7] = new Point(619, 419);
-            m1[8] = new Point(645, 472);
-            m1[9] = new Point(665, 495);
-            
-            m1[10] = new Point(681, 420);
-            m1[11] = new Point(655, 344);
-            m1[12] = new Point(740, 417);
-
-            m1[13] = new Point(1062, 324);
-            m1[14] = new Point(1024, 243);
-            m1[15] = new Point(1103, 311);
-            m1[16] = new Point(1100, 293);
-            m1[17] = new Point(1136, 306);
-            m1[18] = new Point(1130, 279);
-            m1[19] = new Point(1139, 283);
-            m1[20] = new Point(1113, 234);
-            m1[21] = new Point(1197, 255);
-
-            m1[22] = new Point(1280, 720);
-
-            g.FillPolygon(mo1, m1);
-
-
-            //Горы 2
-            Point[] m2 = new Point[31];
-
-            m2[30] = new Point(0, 720);
-
-            m2[0] = new Point(0, 276);
-            m2[1] = new Point(52, 212);
-            m2[2] = new Point(48, 306);
-            m2[3] = new Point(165, 265);
-            m2[4] = new Point(209, 336);
-            m2[5] = new Point(352, 170);
-            m2[6] = new Point(316, 283);
-            m2[7] = new Point(316, 283);
-            m2[8] = new Point(327, 340);
-            m2[9] = new Point(504, 82);
-            m2[10] = new Point(435, 371);
-            m2[11] = new Point(481, 348);
-            m2[12] = new Point(475, 428);
-            m2[13] = new Point(516, 415);
-            m2[14] = new Point(520, 506);
-            m2[15] = new Point(718, 571);
-            
-            m2[16] = new Point(645, 472);
-            m2[17] = new Point(662, 433);
-            m2[18] = new Point(677, 445);
-            m2[19] = new Point(680, 423);
-            m2[20] = new Point(722, 427);
-            m2[21] = new Point(721, 300);
-            m2[22] = new Point(805, 376);
-            m2[23] = new Point(796, 343);
-            m2[24] = new Point(855, 378);
-            m2[25] = new Point(863, 350);
-            m2[26] = new Point(939, 323);
-            m2[27] = new Point(911, 277);
-            m2[28] = new Point(1280, 387);
-
-            m2[29] = new Point(1280, 720);
-
-            g.FillPolygon(mo2, m2);
-
-            //Горы 3.1
-            Point[] m3 = new Point[24];
-
-            m3[0] = new Point(0, 430);
-            
-            m3[12] = new Point(208,511);
-            m3[13] = new Point(190, 439);
-            m3[14] = new Point(141, 492);
-            m3[15] = new Point(122, 472);
-            m3[16] = new Point(107, 477);
-            m3[17] = new Point(128, 391);
-            m3[18] = new Point(56, 445);
-            m3[19] = new Point(49, 427);
-            m3[20] = new Point(32, 437);
-            m3[21] = new Point(30, 423);
-            m3[22] = new Point(14, 427);
-            m3[23] = new Point(14, 411);
-
             g.FillPolygon(mo3, m3);
+            #endregion
 
-            //Горы 4
-            Point[] m4 = new Point[18];
+    #region Горы 4
+            Point[] m4 = new Point[31];
 
-            m4[0] = new Point(211, 510);
-            m4[1] = new Point(234, 480);
-            m4[2] = new Point(265, 505);
-            m4[3] = new Point(315, 467);
-            m4[4] = new Point(394, 517);
-            m4[5] = new Point(422, 494);
-            m4[6] = new Point(725, 577);
-            m4[7] = new Point(617, 531);
-            m4[8] = new Point(666, 496);
-            m4[9] = new Point(693, 533);
-            m4[10] = new Point(794, 510);
-            m4[11] = new Point(845, 527);
-            m4[12] = new Point(890, 642);
-            m4[13] = new Point(583, 650);
-            m4[14] = new Point(446, 649);
-            m4[15] = new Point(429, 612);
-            m4[16] = new Point(354, 598);
-            m4[17] = new Point(341, 556);
-
+            m4[0] = new Point(212, 502);
+            m4[1] = new Point(237, 479);
+            m4[2] = new Point(261, 504);
+            m4[3] = new Point(317, 466);
+            m4[4] = new Point(403, 515);
+            m4[5] = new Point(416, 490);
+            m4[6] = new Point(472, 523);
+            m4[7] = new Point(482, 516);
+            m4[8] = new Point(522, 543);
+            //m4[9] = new Point(540, 525);
+            m4[9] = new Point(739, 580);
+            m4[10] = new Point(603, 530);
+            m4[11] = new Point(666, 500);
+            m4[12] = new Point(691, 535);
+            m4[13] = new Point(793, 507);
+            m4[14] = new Point(842, 527);
+            m4[15] = new Point(860, 571);
+            m4[16] = new Point(830, 541);
+            m4[17] = new Point(818, 595);
+            m4[18] = new Point(880, 612);
+            m4[19] = new Point(831, 606);
+            m4[20] = new Point(855, 637);
+            m4[21] = new Point(743, 657);
+            m4[22] = new Point(726, 641);
+            m4[23] = new Point(712, 666);
+            m4[24] = new Point(676, 655);
+            m4[25] = new Point(598, 673);
+            m4[26] = new Point(566, 645);
+            m4[27] = new Point(448, 643);
+            m4[28] = new Point(432, 612);
+            m4[29] = new Point(356, 602);
+            m4[30] = new Point(337, 558);
+    #endregion
             g.FillPolygon(mo4, m4);
 
-            //Горы 3.2
-            Point[] m3 = new Point[11];
+#endregion
 
-            m3[0] = new Point(889, 642);
+            background.Dispose();
 
-            m3[5] = new Point(1110, 469);
-            m3[6] = new Point(1088, 445);
-            m3[7] = new Point(1032, 630);
-            m3[8] = new Point(1009, 652);
-            m3[9] = new Point(926, 654);
-            m3[10] = new Point(902, 636);
-
-            g.FillPolygon(mo3, m3);
-
-            //Горы 5.1
-            Point[] m51 = new Point[25];
-
-            m51[0] = new Point(0, 475);
-            m51[1] = new Point(110, 601);
-            m51[2] = new Point(112, 575);
-            m51[3] = new Point(137, 583);
-            m51[4] = new Point(154, 533);
-            m51[5] = new Point(218, 657);
-            m51[6] = new Point(231, 584);
-            m51[7] = new Point(293, 662);
-            m51[8] = new Point(346, 631);
-            m51[9] = new Point(560, 720);
-
-            m51[10] = new Point(652, 720);
-            m51[11] = new Point(661, 695);
-            m51[12] = new Point(688, 709);
-            m51[13] = new Point(706, 625);
-            m51[14] = new Point(808, 720);
-            m51[15] = new Point(808, 720);
-
-            m51[16] = new Point(879, 720);
-            m51[17] = new Point(893, 705);
-            m51[18] = new Point(938, 720);
-
-            m51[19] = new Point(1000, 720);
-            m51[20] = new Point(1087, 440);
-            m51[21] = new Point(1112, 470);
-            m51[22] = new Point(1280, 42);
-            m51[23] = new Point(1280, 720);
-            m51[24] = new Point(0, 720);
-
-            g.FillPolygon(mo1, m51);
+            cl1.Dispose();
+            cl2.Dispose();
+            cl3.Dispose();
+            cl4.Dispose();
+            cl5.Dispose();
 
             mo1.Dispose();
             mo2.Dispose();
             mo3.Dispose();
-            mo4.Dispose();*/
+            mo4.Dispose();
 
             g.Dispose();
         }
 
+        private void DrawRiver()
+        {
+            g = CreateGraphics();
+
+            SolidBrush r = new SolidBrush(Color.FromArgb(17,15,55));
+            /*
+            Point[] r1 = new Point[4];
+
+            ri[0] = new Point(603, 530);
+            ri[1] = new Point(620, 560);
+            ri[2] = new Point(930, 560);
+            ri[3] = new Point(790, 650);
+            
+            g.DrawBeziers(ri, r1);
+
+            Point[] r2 = new Point[4];
+
+            
+            g.DrawBeziers(ri, r2);
+*/
+            Point[] ri = new Point[14];
+
+            ri[0] = new Point(603, 530);
+            ri[1] = new Point(620, 560);
+            ri[2] = new Point(930, 560);
+            ri[3] = new Point(790, 650);
+            ri[4] = new Point(743, 657);
+            ri[5] = new Point(726, 641);
+            ri[6] = new Point(712, 666);
+            ri[7] = new Point(676, 655);
+            ri[8] = new Point(598, 673);
+            ri[9] = new Point(566, 645);
+            ri[10] = new Point(559, 645);
+            ri[11] = new Point(850, 620);
+            ri[12] = new Point(607, 549);
+            ri[13] = new Point(583, 530);
+
+            byte[] typeRi = new byte[14];
+
+            typeRi[0] = (byte)PathPointType.Start;
+            typeRi[1] = (byte)PathPointType.Bezier;
+            typeRi[2] = (byte)PathPointType.Bezier;
+            typeRi[3] = (byte)PathPointType.Bezier;
+            typeRi[4] = (byte)PathPointType.Line;
+            typeRi[5] = (byte)PathPointType.Line;
+            typeRi[6] = (byte)PathPointType.Line;
+            typeRi[7] = (byte)PathPointType.Line;
+            typeRi[8] = (byte)PathPointType.Line;
+            typeRi[9] = (byte)PathPointType.Line;
+            typeRi[10] = (byte)PathPointType.Bezier;
+            typeRi[11] = (byte)PathPointType.Bezier;
+            typeRi[12] = (byte)PathPointType.Bezier;
+            typeRi[13] = (byte)PathPointType.Line;
+
+            GraphicsPath river = new GraphicsPath(ri, typeRi);
+
+
+
+            g.FillPath(r, river);
+
+
+        }
+
         private void Form1_Paint(object sender, PaintEventArgs e)
-        { DrawSky(); } 
+        { DrawBack();
+          DrawRiver(); } 
             
         private void Form1_Resize(object sender, EventArgs e)
-        {   DrawSky();  }
+        {   DrawBack();  
+            DrawBack(); }
     }
 }
 
