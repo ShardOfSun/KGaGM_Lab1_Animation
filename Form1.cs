@@ -469,10 +469,11 @@ namespace WindowsFormsApp1
 
         private void DrawDemon()
         {
-            SolidBrush de1 = new SolidBrush(Color.Black);
-            SolidBrush de2 = new SolidBrush(Color.Red);
+            
 #region Заливка
-            #region Тело
+            SolidBrush de1 = new SolidBrush(Color.Black);
+            
+    #region Тело
             Point[] d1 = new Point[8];
 
             d1[0] = new Point(690, 360);
@@ -500,69 +501,161 @@ namespace WindowsFormsApp1
             g.FillEllipse(de1, 596, 269, 98, 329);
             g.FillEllipse(de1, 569, 214, 158, 163);
             g.FillPath(de1, d1p);
-            #endregion
-            #region Крылья
+    #endregion
 
-            byte[] typeD2 = new byte[22];
+    #region Крылья
+            byte[] typeD12 = new byte[22];
 
-            typeD2[0] = (byte)PathPointType.Start;
-            typeD2[1] = (byte)PathPointType.Bezier;
-            typeD2[2] = (byte)PathPointType.Bezier;
-            typeD2[3] = (byte)PathPointType.Bezier;
-            typeD2[4] = (byte)PathPointType.Line;
-            typeD2[5] = (byte)PathPointType.Line;
-            typeD2[6] = (byte)PathPointType.Bezier;
-            typeD2[7] = (byte)PathPointType.Bezier;
-            typeD2[8] = (byte)PathPointType.Bezier;
-            typeD2[9] = (byte)PathPointType.Line;
-            typeD2[10] = (byte)PathPointType.Line;
-            typeD2[11] = (byte)PathPointType.Line;
-            typeD2[12] = (byte)PathPointType.Line;
-            typeD2[13] = (byte)PathPointType.Line;
-            typeD2[14] = (byte)PathPointType.Line;
-            typeD2[15] = (byte)PathPointType.Line;
-            typeD2[16] = (byte)PathPointType.Line;
-            typeD2[17] = (byte)PathPointType.Line;
-            typeD2[18] = (byte)PathPointType.Line;
-            typeD2[19] = (byte)PathPointType.Line;
-            typeD2[20] = (byte)PathPointType.Line;
-            typeD2[21] = (byte)PathPointType.Line;
+            typeD12[0] = (byte)PathPointType.Start;
+            typeD12[1] = (byte)PathPointType.Bezier;
+            typeD12[2] = (byte)PathPointType.Bezier;
+            typeD12[3] = (byte)PathPointType.Bezier;
+            typeD12[4] = (byte)PathPointType.Line;
+            typeD12[5] = (byte)PathPointType.Line;
+            typeD12[6] = (byte)PathPointType.Bezier;
+            typeD12[7] = (byte)PathPointType.Bezier;
+            typeD12[8] = (byte)PathPointType.Bezier;
+            typeD12[9] = (byte)PathPointType.Line;
+            typeD12[10] = (byte)PathPointType.Line;
+            typeD12[11] = (byte)PathPointType.Line;
+            typeD12[12] = (byte)PathPointType.Line;
+            typeD12[13] = (byte)PathPointType.Line;
+            typeD12[14] = (byte)PathPointType.Line;
+            typeD12[15] = (byte)PathPointType.Line;
+            typeD12[16] = (byte)PathPointType.Line;
+            typeD12[17] = (byte)PathPointType.Line;
+            typeD12[18] = (byte)PathPointType.Line;
+            typeD12[19] = (byte)PathPointType.Line;
+            typeD12[20] = (byte)PathPointType.Line;
+            typeD12[21] = (byte)PathPointType.Line;
             
             //Крыло 1
-            Point[] d21 = new Point[22];
+            Point[] d11 = new Point[22];
 
-            d21[0] = new Point(682, 368);
-            d21[1] = new Point(737, 360);
-            d21[2] = new Point(776, 340);
+            d11[0] = new Point(682, 368);
+            d11[1] = new Point(737, 360);
+            d11[2] = new Point(776, 340);
 
-            d21[3] = new Point(799, 288);
-            d21[4] = new Point(788, 272);
+            d11[3] = new Point(799, 288);
+            d11[4] = new Point(788, 272);
             
-            d21[5] = new Point(807, 278);
-            d21[6] = new Point(880, 308);
-            d21[7] = new Point(930, 375);
+            d11[5] = new Point(807, 278);
+            d11[6] = new Point(880, 308);
+            d11[7] = new Point(930, 375);
 
-            d21[8] = new Point(875, 486);
-            d21[9] = new Point(872, 470);
-            d21[10] = new Point(836, 530);
-            d21[11] = new Point(835, 462);
-            d21[12] = new Point(824, 468);
-            d21[13] = new Point(816, 447);
-            d21[14] = new Point(788, 484);
-            d21[15] = new Point(774, 436);
-            d21[16] = new Point(744, 464);
-            d21[17] = new Point(740, 439);
-            d21[18] = new Point(730, 455);
-            d21[19] = new Point(722, 435);
-            d21[20] = new Point(706, 443);
-            d21[21] = new Point(690, 430);
+            d11[8] = new Point(875, 486);
+            d11[9] = new Point(872, 470);
+            d11[10] = new Point(836, 530);
+            d11[11] = new Point(835, 462);
+            d11[12] = new Point(824, 468);
+            d11[13] = new Point(816, 447);
+            d11[14] = new Point(788, 484);
+            d11[15] = new Point(774, 436);
+            d11[16] = new Point(744, 464);
+            d11[17] = new Point(740, 439);
+            d11[18] = new Point(730, 455);
+            d11[19] = new Point(722, 435);
+            d11[20] = new Point(706, 443);
+            d11[21] = new Point(690, 430);
 
-            GraphicsPath d21p = new GraphicsPath(d21, typeD2);
+            GraphicsPath d11p = new GraphicsPath(d11, typeD12);
 
-            g.FillPath(de1, d21p);
+            g.FillPath(de1, d11p);
 
+            //Крыло 2
+            Point[] d12 = new Point[22];
+
+            d12[0] = new Point(605, 368);
+            d12[1] = new Point(539, 360);
+            d12[2] = new Point(500, 340);
+
+            d12[3] = new Point(460, 288);
+            d12[4] = new Point(480, 272);
+
+            d12[5] = new Point(450, 278);
+            d12[6] = new Point(371, 308);
+            d12[7] = new Point(321, 400);
+
+            d12[8] = new Point(450, 530);
+            d12[9] = new Point(445, 465);
+            d12[10] = new Point(460, 478);
+            d12[11] = new Point(466, 452);
+            d12[12] = new Point(488, 483);
+            d12[13] = new Point(492, 462);
+            d12[14] = new Point(510, 476);
+            d12[15] = new Point(519, 440);
+            d12[16] = new Point(537, 455);
+            d12[17] = new Point(553, 430);
+            d12[18] = new Point(571, 446);
+            d12[19] = new Point(596, 430);
+            d12[20] = new Point(596, 430);
+            d12[21] = new Point(596, 430);
+
+            GraphicsPath d12p = new GraphicsPath(d12, typeD12);
+
+            g.FillPath(de1, d12p);
 
             #endregion
+
+de1.Dispose();
+#endregion
+
+#region Контуры
+            Pen de21 = new Pen(Color.Red, 3);
+            SolidBrush de22 = new SolidBrush(Color.FromArgb(70,3,0));
+
+            //Рога
+
+            Point[] d21 = new Point[3];
+
+            d21[0] = new Point(624, 219);
+            d21[1] = new Point(618, 173);
+            d21[2] = new Point(579, 255);
+
+            g.FillPolygon(de22, d21);
+            g.DrawPolygon(de21, d21);
+
+            
+            d21[0] = new Point(672, 219);
+            d21[1] = new Point(678, 173);
+            d21[2] = new Point(716, 255);
+
+            g.FillPolygon(de22, d21);
+            g.DrawPolygon(de21, d21);
+            
+            //Глаза
+            Point[] d22 = new Point[5];
+
+            d22[0] = new Point(632, 299);
+            d22[1] = new Point(617, 330);
+            d22[2] = new Point(577, 316);
+            d22[3] = new Point(589, 276);
+            d22[4] = new Point(638, 299);
+
+            byte[] typeD22 = new byte[5];
+
+            typeD22[0] = (byte)PathPointType.Start;
+            typeD22[1] = (byte)PathPointType.Bezier;
+            typeD22[2] = (byte)PathPointType.Bezier;
+            typeD22[3] = (byte)PathPointType.Bezier;
+            typeD22[4] = (byte)PathPointType.Line;
+
+            GraphicsPath d221p = new GraphicsPath(d22, typeD22);
+
+            g.FillPath(de22, d221p);
+            g.DrawPath(de21, d221p);
+
+            d22[0] = new Point(661, 299);
+            d22[1] = new Point(679, 330);
+            d22[2] = new Point(718, 316);
+            d22[3] = new Point(705, 276);
+            d22[4] = new Point(656, 299);
+
+            GraphicsPath d222p = new GraphicsPath(d22, typeD22);
+
+            g.FillPath(de22, d222p);
+            g.DrawPath(de21, d222p);
+
             #endregion
         }
 
@@ -579,4 +672,3 @@ namespace WindowsFormsApp1
         }
     }
 }
-
