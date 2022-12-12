@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
 
 namespace WindowsFormsApp1
 {
@@ -11,17 +11,21 @@ namespace WindowsFormsApp1
         // float W, H, w, h, /*x0, y0,*/ k;
 
         public Form1()
-        { InitializeComponent(); }
+        {
+            InitializeComponent();
+        }
 
         private void DrawBack()
         {
             // Начало работы
-            g = CreateGraphics();
-            g.Clear(SystemColors.Control);
+/*            
+#region Масштабирование
 
-            // Размеры формы
-            /*W = ClientSize.Width;
-            H = ClientSize.Height;
+            double W = ClientSize.Width;
+            double H = ClientSize.Height;
+            double w = ClientSize.Height;
+            double h = ClientSize.Height;
+            double k;
 
             if ((W / 16 * 9) < H)
             {
@@ -56,12 +60,14 @@ namespace WindowsFormsApp1
             //y0 = (H - h) / 2;
             
             // Коэфициент масштаба объектов
-            k = 0; */
+            //k = 0; 
 
-
-
-            #region Облака
-
+#endregion
+*/            
+            g = CreateGraphics();
+            g.Clear(Color.White);
+#region Облака
+            
             // Фон (Облака 0)
             SolidBrush background = new SolidBrush(Color.FromArgb(140, 165, 189));
             g.FillRectangle(background, 0, 0, 1280, 720);
@@ -199,15 +205,15 @@ namespace WindowsFormsApp1
             g.FillRectangle(cl5, 300, 370, 800, 150);
             g.FillRectangle(cl5, 600, 360, 130, 150);
             #endregion
-
-            #region Горы
+            
+#region Горы
             // Кисти для Гор
             SolidBrush mo1 = new SolidBrush(Color.FromArgb(23, 11, 24));
             SolidBrush mo2 = new SolidBrush(Color.FromArgb(35, 20, 30));
             SolidBrush mo3 = new SolidBrush(Color.FromArgb(69, 34, 48));
             SolidBrush mo4 = new SolidBrush(Color.FromArgb(51, 25, 32));
 
-            #region Горы 1
+    #region Горы 1
             Point[] m1 = new Point[22];
 
             m1[0] = new Point(0, 720);
@@ -236,7 +242,7 @@ namespace WindowsFormsApp1
             g.FillPolygon(mo1, m1);
             #endregion
 
-            #region Горы 2
+    #region Горы 2
             Point[] m2 = new Point[62];
 
             m2[0] = new Point(0, 276);
@@ -305,7 +311,7 @@ namespace WindowsFormsApp1
             g.FillPolygon(mo2, m2);
             #endregion
 
-            #region Горы 3
+    #region Горы 3
             Point[] m3 = new Point[38];
 
             m3[0] = new Point(0, 374);
@@ -350,7 +356,7 @@ namespace WindowsFormsApp1
             g.FillPolygon(mo3, m3);
             #endregion
 
-            #region Горы 4
+    #region Горы 4
             Point[] m4 = new Point[31];
 
             m4[0] = new Point(212, 502);
@@ -389,7 +395,9 @@ namespace WindowsFormsApp1
 
             #endregion
 
-            #endregion
+#endregion
+
+#region Очистка
             background.Dispose();
 
             cl1.Dispose();
@@ -404,12 +412,18 @@ namespace WindowsFormsApp1
             mo4.Dispose();
 
             g.Dispose();
+            g.Dispose();
+            g.Dispose();
+            g.Dispose();
+#endregion
+          
         }
 
         private void DrawRiver()
         {
             g = CreateGraphics();
-            #region Река
+
+#region Река
             SolidBrush ri = new SolidBrush(Color.FromArgb(17, 15, 55));
 
             Point[] r = new Point[14];
@@ -451,7 +465,7 @@ namespace WindowsFormsApp1
             g.FillPath(ri, river);
             #endregion
 
-            #region Горы поверх
+#region Горы поверх
             //Горы поверх 
             SolidBrush mo2 = new SolidBrush(Color.FromArgb(35, 20, 30));
 
@@ -463,17 +477,19 @@ namespace WindowsFormsApp1
 
             g.FillPolygon(mo2, m2);
             #endregion
+
             mo2.Dispose();
             ri.Dispose();
         }
 
         private void DrawDemon()
         {
-            
+            g = CreateGraphics();
+
 #region Заливка
             SolidBrush de1 = new SolidBrush(Color.Black);
-            
-    #region Тело
+
+            #region Тело
             Point[] d1 = new Point[8];
 
             d1[0] = new Point(690, 360);
@@ -495,16 +511,16 @@ namespace WindowsFormsApp1
             typeD1[5] = (byte)PathPointType.Bezier;
             typeD1[6] = (byte)PathPointType.Bezier;
             typeD1[7] = (byte)PathPointType.Bezier;
- 
+
             GraphicsPath d1p = new GraphicsPath(d1, typeD1);
 
             g.FillEllipse(de1, 596, 269, 98, 329);
             g.FillEllipse(de1, 569, 214, 158, 163);
             g.FillPath(de1, d1p);
-    #endregion
+            #endregion
 
-    #region Крылья
-            byte[] typeD12 = new byte[22];
+            #region Крылья
+            byte[] typeD12 = new byte[20];
 
             typeD12[0] = (byte)PathPointType.Start;
             typeD12[1] = (byte)PathPointType.Bezier;
@@ -526,11 +542,10 @@ namespace WindowsFormsApp1
             typeD12[17] = (byte)PathPointType.Line;
             typeD12[18] = (byte)PathPointType.Line;
             typeD12[19] = (byte)PathPointType.Line;
-            typeD12[20] = (byte)PathPointType.Line;
-            typeD12[21] = (byte)PathPointType.Line;
-            
+
+
             //Крыло 1
-            Point[] d11 = new Point[22];
+            Point[] d11 = new Point[20];
 
             d11[0] = new Point(682, 368);
             d11[1] = new Point(737, 360);
@@ -538,32 +553,30 @@ namespace WindowsFormsApp1
 
             d11[3] = new Point(799, 288);
             d11[4] = new Point(788, 272);
-            
+
             d11[5] = new Point(807, 278);
             d11[6] = new Point(880, 308);
             d11[7] = new Point(930, 375);
 
-            d11[8] = new Point(875, 486);
-            d11[9] = new Point(872, 470);
-            d11[10] = new Point(836, 530);
-            d11[11] = new Point(835, 462);
-            d11[12] = new Point(824, 468);
-            d11[13] = new Point(816, 447);
-            d11[14] = new Point(788, 484);
-            d11[15] = new Point(774, 436);
-            d11[16] = new Point(744, 464);
-            d11[17] = new Point(740, 439);
-            d11[18] = new Point(730, 455);
-            d11[19] = new Point(722, 435);
-            d11[20] = new Point(706, 443);
-            d11[21] = new Point(690, 430);
+            d11[8] = new Point(836, 530);
+            d11[9] = new Point(835, 462);
+            d11[10] = new Point(824, 468);
+            d11[11] = new Point(816, 447);
+            d11[12] = new Point(788, 484);
+            d11[13] = new Point(774, 436);
+            d11[14] = new Point(744, 464);
+            d11[15] = new Point(740, 439);
+            d11[16] = new Point(730, 455);
+            d11[17] = new Point(722, 435);
+            d11[18] = new Point(706, 443);
+            d11[19] = new Point(690, 430);
 
             GraphicsPath d11p = new GraphicsPath(d11, typeD12);
 
             g.FillPath(de1, d11p);
 
             //Крыло 2
-            Point[] d12 = new Point[22];
+            Point[] d12 = new Point[20];
 
             d12[0] = new Point(605, 368);
             d12[1] = new Point(539, 360);
@@ -588,8 +601,6 @@ namespace WindowsFormsApp1
             d12[17] = new Point(553, 430);
             d12[18] = new Point(571, 446);
             d12[19] = new Point(596, 430);
-            d12[20] = new Point(596, 430);
-            d12[21] = new Point(596, 430);
 
             GraphicsPath d12p = new GraphicsPath(d12, typeD12);
 
@@ -597,17 +608,17 @@ namespace WindowsFormsApp1
 
             #endregion
 
-de1.Dispose();
-#endregion
+            de1.Dispose();
+            #endregion
 
 #region Контуры
             Pen de21 = new Pen(Color.FromArgb(141, 0, 0), 3);
             Pen de22 = new Pen(Color.FromArgb(40, 0, 0), 3);
-            SolidBrush de23 = new SolidBrush(Color.FromArgb(70,3,0));
-            SolidBrush de24 = new SolidBrush(Color.LightGreen);
+            SolidBrush de23 = new SolidBrush(Color.FromArgb(70, 3, 0));
+            SolidBrush de24 = new SolidBrush(Color.FromArgb(255, 128, 43));
             Pen de25 = new Pen(Color.FromArgb(90, 0, 0), 3);
 
-    #region Лицо
+            #region Лицо
             //Рога
             Point[] d21 = new Point[3];
 
@@ -618,7 +629,7 @@ de1.Dispose();
             g.FillPolygon(de23, d21);
             g.DrawPolygon(de22, d21);
 
-            
+
             d21[0] = new Point(672, 219);
             d21[1] = new Point(678, 173);
             d21[2] = new Point(716, 255);
@@ -677,13 +688,13 @@ de1.Dispose();
             typeD23[3] = (byte)PathPointType.Line;
 
             GraphicsPath d23p = new GraphicsPath(d23, typeD23);
-           
+
             g.DrawPath(de21, d23p);
 
 
             #endregion
 
-    #region Тело
+            #region Тело
             //Пузико
             Point[] d24 = new Point[4];
 
@@ -703,46 +714,136 @@ de1.Dispose();
 
             g.DrawLine(de25, 646, 530, 646, 590);
 
-            //Крылья
-            Point[] d251 = new Point[7];
+            #endregion
 
-            d251[0] = new Point(612, 375);
-            d251[1] = new Point(555, 374);
-            d251[2] = new Point(504, 347);
-            d251[3] = new Point(458, 301);
-            d251[4] = new Point(433, 368);
-            d251[5] = new Point(432, 337);
-            d251[6] = new Point(468, 517);
+            #region Крылья
+            //Крыло 1
+            Point[] d251 = new Point[4];
 
-            byte[] typeD251 = new byte[7];
+            d251[0] = new Point(555, 430);
+            d251[1] = new Point(539, 420);
+            d251[2] = new Point(525, 409);
+            d251[3] = new Point(510, 389);
 
-            typeD251[0] = (byte)PathPointType.Start;
-            typeD251[1] = (byte)PathPointType.Bezier;
-            typeD251[2] = (byte)PathPointType.Bezier;
-            typeD251[3] = (byte)PathPointType.Bezier;
-            typeD251[4] = (byte)PathPointType.Bezier;
-            typeD251[5] = (byte)PathPointType.Bezier;
-            typeD251[6] = (byte)PathPointType.Bezier;
+            g.DrawBeziers(de22, d251);
 
-            GraphicsPath d251p = new GraphicsPath(d251, typeD251);
+            d251[0] = new Point(450, 300);
+            d251[1] = new Point(472, 349);
+            d251[2] = new Point(485, 387);
+            d251[3] = new Point(518, 423);
 
-            g.DrawPath(de22, d251p);
+            g.DrawBeziers(de22, d251);
 
-    #endregion
+            d251[0] = new Point(460, 356);
+            d251[1] = new Point(465, 392);
+            d251[2] = new Point(477, 426);
+            d251[3] = new Point(492, 453);
 
-#endregion
+            g.DrawBeziers(de22, d251);
+
+            d251[0] = new Point(450, 300);
+            d251[1] = new Point(448, 371);
+            d251[2] = new Point(453, 412);
+            d251[3] = new Point(464, 445);
+
+            g.DrawBeziers(de22, d251);
+
+            Point[] d251b = new Point[7];
+
+            d251b[0] = new Point(612, 370);
+            d251b[1] = new Point(555, 374);
+            d251b[2] = new Point(504, 347);
+            d251b[3] = new Point(458, 301);
+            d251b[4] = new Point(433, 300);
+            d251b[5] = new Point(400, 337);
+            d251b[6] = new Point(450, 525);
+
+            byte[] typeD251b = new byte[7];
+
+            typeD251b[0] = (byte)PathPointType.Start;
+            typeD251b[1] = (byte)PathPointType.Bezier;
+            typeD251b[2] = (byte)PathPointType.Bezier;
+            typeD251b[3] = (byte)PathPointType.Bezier;
+            typeD251b[4] = (byte)PathPointType.Bezier;
+            typeD251b[5] = (byte)PathPointType.Bezier;
+            typeD251b[6] = (byte)PathPointType.Bezier;
+
+            GraphicsPath d251bp = new GraphicsPath(d251b, typeD251b);
+
+            g.DrawPath(de25, d251bp);
+
+            //Крыло 2
+            Point[] d252 = new Point[4];
+
+            d252[0] = new Point(757, 385);
+            d252[1] = new Point(749, 404);
+            d252[2] = new Point(739, 415);
+            d252[3] = new Point(728, 425);
+
+            g.DrawBeziers(de22, d252);
+
+            d252[0] = new Point(808, 324);
+            d252[1] = new Point(796, 360);
+            d252[2] = new Point(778, 399);
+            d252[3] = new Point(743, 433);
+
+            g.DrawBeziers(de22, d252);
+
+            d252[0] = new Point(809, 349);
+            d252[1] = new Point(802, 380);
+            d252[2] = new Point(795, 407);
+            d252[3] = new Point(780, 430);
+
+            g.DrawBeziers(de22, d252);
+
+            d252[0] = new Point(814, 295);
+            d252[1] = new Point(825, 346);
+            d252[2] = new Point(827, 396);
+            d252[3] = new Point(816, 446);
+
+            g.DrawBeziers(de22, d252);
+
+            Point[] d252b = new Point[7];
+
+            d252b[0] = new Point(680, 370);
+            d252b[1] = new Point(744, 366);
+            d252b[2] = new Point(786, 335);
+            d252b[3] = new Point(808, 295);
+            d252b[4] = new Point(830, 300);
+            d252b[5] = new Point(868, 337);
+            d252b[6] = new Point(837, 525);
+
+            byte[] typed252b = new byte[7];
+
+            typed252b[0] = (byte)PathPointType.Start;
+            typed252b[1] = (byte)PathPointType.Bezier;
+            typed252b[2] = (byte)PathPointType.Bezier;
+            typed252b[3] = (byte)PathPointType.Bezier;
+            typed252b[4] = (byte)PathPointType.Bezier;
+            typed252b[5] = (byte)PathPointType.Bezier;
+            typed252b[6] = (byte)PathPointType.Bezier;
+
+            GraphicsPath d252bp = new GraphicsPath(d252b, typed252b);
+
+            g.DrawPath(de25, d252bp);
+            #endregion
+
+            #endregion
         }
 
+
         private void Form1_Paint(object sender, PaintEventArgs e)
-        { DrawBack();
-          DrawRiver();
-          DrawDemon();
-        } 
-            
-        private void Form1_Resize(object sender, EventArgs e)
-        {   DrawBack();  
+        {
+            DrawBack();
             DrawRiver();
-            DrawDemon(); 
+            DrawDemon();
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            DrawBack();
+            DrawRiver();
+            DrawDemon();
         }
     }
 }
