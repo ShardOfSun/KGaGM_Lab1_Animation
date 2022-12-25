@@ -29,22 +29,28 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.SuspendLayout();
             // 
             // Form1
             // 
             this.AllowDrop = true;
-            this.BackColor = System.Drawing.Color.AliceBlue;
-            this.ClientSize = new System.Drawing.Size(950, 535);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1924, 1055);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.TransparencyKey = System.Drawing.Color.Transparent;
+            this.ResizeEnd += new System.EventHandler(this.Form1_Resize);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
-            this.Resize += new System.EventHandler(this.Form1_Resize);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
 
-        }
+        private System.Windows.Forms.Timer timer1;
+    }
 }
 

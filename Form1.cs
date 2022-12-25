@@ -2,70 +2,31 @@
 using System.Drawing;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+//using System.Threading;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        Graphics g;
-        // float W, H, w, h, /*x0, y0,*/ k;
+        Graphics g, ga;
+        Bitmap bmp1, bmp2;
+        int w, h;
+        int x0, y0;
+        //int time;
 
         public Form1()
         {
             InitializeComponent();
+            //InitializeTimer();
+            ga = CreateGraphics();
+            bmp1 = new Bitmap(1280, 720);
+            bmp2 = new Bitmap(1280, 720);
+            ga = CreateGraphics();
         }
 
         private void DrawBack()
         {
-            // Начало работы
-/*            
-#region Масштабирование
-
-            double W = ClientSize.Width;
-            double H = ClientSize.Height;
-            double w = ClientSize.Height;
-            double h = ClientSize.Height;
-            double k;
-
-            if ((W / 16 * 9) < H)
-            {
-                w = 1;
-                int t = Convert.ToInt32(Math.Round(W / 16)) * 16;
-                while (w % 16 != 0)
-                {
-                    if (t < W) { W--; }
-                    else if (t > W) { W++; }
-                    else if (t == W) { w = W; }
-                }
-
-                k = w / 16;
-                h = k * 9;
-            }
-            if ((W / 16 * 9) > H)
-            {
-                h = 1;
-                int t = Convert.ToInt32(Math.Round(H / 9)) * 9;
-                while (h % 9 != 0)
-                {
-                    if (t < H) { H--; }
-                    else if (t > H) { H++; }
-                    else if (t == H) { h = H; }
-                }
-
-                k = h / 9;
-                w = k * 16;
-            }
-
-            //x0 = (W - w) / 2;
-            //y0 = (H - h) / 2;
-            
-            // Коэфициент масштаба объектов
-            //k = 0; 
-
-#endregion
-*/            
-            g = CreateGraphics();
-            g.Clear(Color.White);
+            g = Graphics.FromImage(bmp1);
 #region Облака
             
             // Фон (Облака 0)
@@ -416,13 +377,11 @@ namespace WindowsFormsApp1
             g.Dispose();
             g.Dispose();
 #endregion
-          
         }
 
         private void DrawRiver()
         {
-            g = CreateGraphics();
-
+            g = Graphics.FromImage(bmp1);
 #region Река
             SolidBrush ri = new SolidBrush(Color.FromArgb(17, 15, 55));
 
@@ -484,8 +443,7 @@ namespace WindowsFormsApp1
 
         private void DrawDemon()
         {
-            g = CreateGraphics();
-
+            g = Graphics.FromImage(bmp2);
 #region Заливка
             SolidBrush de1 = new SolidBrush(Color.Black);
 
@@ -831,19 +789,141 @@ namespace WindowsFormsApp1
             #endregion
         }
 
+        private void DrawText()
+        {
+            Font f1 = new Font("Monotype Corsiva", 30F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            Font f2 = new Font("Mistral", 30F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            Font f3 = new Font("Candara", 30F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            g = Graphics.FromImage(bmp1);
+
+            g.DrawString("Вот он мой", f2, new SolidBrush(Color.Black), 50, 40);
+            g.DrawString("Демон,", f1, new SolidBrush(Color.FromArgb(70, 3, 0)), 230, 40);
+            g.DrawString("Летит среди", f2, new SolidBrush(Color.Black), 180, 110);
+            g.DrawString("Хмар", f1, new SolidBrush(Color.FromArgb(8, 12, 52)), 370, 110);
+            g.DrawString("Летит среди хмар,", f2, new SolidBrush(Color.Black), 950, 70);
+            g.DrawString("А в глазах - ", f2, new SolidBrush(Color.DarkOrange), 800, 140);
+            g.DrawString("ПОЖАР", f3, new SolidBrush(Color.FromArgb(141, 0, 0)), 950, 210);
+        }
+
+        /*private void Animation()
+        {
+            while (true)
+            {
+                DrawBack();
+                DrawRiver();
+                DrawDemon();
+
+                ga.DrawImage(bmp1, x0, y0, w, h);
+
+                DrawText();
+
+                bool f = true;
+                bool t = true;
+                int i = 0;
+                int y1_temp = 0;
+                while (f)
+                {
+                    Thread.Sleep(20);
+                    ga.DrawImage(bmp2, x0, y0+i, w, h);
+                    i++;
+                    y1_temp = y0 + i;
+                    if (i == 10) { 
+                        break;
+                    }
+                }
+
+                for (i = 0; i <= 20; i++)
+                {
+                    Thread.Sleep(20);
+                    ga.DrawImage(bmp2, x0, y1_temp - i, w, h);
+                }
+                for (i = 20; i >= 0; i--)
+                {
+                    Thread.Sleep(20);
+                    ga.DrawImage(bmp2, x0, y1_temp - i, w, h);
+                }
+            }
+        }
+*/
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
+            Scale();
+            //time = 0;
             DrawBack();
             DrawRiver();
             DrawDemon();
+            DrawText();
+            ga.DrawImage(bmp1, x0, y0, w, h);
+            ga.DrawImage(bmp2, x0, y0, w, h);
         }
 
         private void Form1_Resize(object sender, EventArgs e)
         {
+            Scale();
+            //time = 0;
             DrawBack();
             DrawRiver();
             DrawDemon();
+            DrawText();
+            ga.DrawImage(bmp1, x0, y0, w, h);
+            ga.DrawImage(bmp2, x0, y0, w, h);
         }
+
+        void Scale()
+        {
+            ga.Clear(SystemColors.Control);
+            int W = ClientSize.Width;
+            int H = ClientSize.Height;
+            w = 1280;
+            h = 720;
+            int k;
+            if ((W / 16 * 9) < H)
+            {
+                w = 1;
+                int t = Convert.ToInt32(Math.Round((double)W / 16)) * 16;
+                while (w % 16 != 0)
+                {
+                    if (t < W) { W--; }
+                    else if (t > W) { W++; }
+                    else if (t == W) { w = W; }
+                }
+
+                k = w / 16;
+                h = k * 9;
+
+            }
+            else if ((W / 16 * 9) > H)
+            {
+                h = 1;
+                int t = Convert.ToInt32(Math.Round((double)H / 9)) * 9;
+                while (h % 9 != 0)
+                {
+                    if (t < H) { H--; }
+                    else if (t > H) { H++; }
+                    else if (t == H) { h = H; }
+                }
+
+                k = h / 9;
+                w = k * 16;
+            }
+
+            x0 = (W - w) / 2;
+            y0 = (H - h) / 2;
+        }
+
+       /* private void InitializeTimer()
+        {
+            time = 0;
+            timer1.Interval = 1;
+            timer1.Enabled = true;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+        }*/
+
+       /*private void timer1_Tick(object sender, EventArgs e)
+        { 
+            Animation();
+        }*/
+
     }
 }
